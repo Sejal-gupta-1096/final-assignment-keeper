@@ -1,0 +1,314 @@
+.navbar-custom { 
+  background-color:#3f51b5; 
+} 
+
+
+
+body{
+  font-family: 'Ubuntu', sans-serif;
+  background-color: #e4e3e3;
+}
+/* Modify brand and text color */ 
+
+.navbar-custom .navbar-brand, 
+.navbar-custom .navbar-text 
+{ 
+  color:white; 
+} 
+
+#userform{
+  margin: 2% 30% 2% 35%;
+}
+
+#userform input{
+  padding: 2%;
+}
+
+#user label{
+  margin-top: 1%;
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
+#userform #id{
+  border: 2px solid black;
+}
+
+#user input{
+  display: block;
+  width:60%;
+  padding: 0.5%;
+}
+#user2 input{
+  display: block;
+  width:60%;
+  padding: 0.5%;
+}
+#user{
+  margin : 0% 19% 2% 18%;
+}
+#file{
+  padding: 2%;
+  margin-left: -0.5%;
+}
+
+#inputGroupFile04{
+  background-color:#479ae7;
+}
+
+#sidebar {
+  color: black;
+  height: 100%;
+}
+
+#hoverchange:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.badge{
+  padding: 1%;
+}
+
+#navbar{
+  margin:0% 5% 0% 5%;
+  z-index: 3;
+}
+
+nav{
+  font-size: 1.2rem;
+  background-color: #010a43;
+  z-index: 2;
+}
+
+#user2{
+  margin-left: 15%;
+  padding: 5%;
+  display: block;
+}
+
+#upload{
+  margin-left: 20%;
+  text-align: left;
+}
+#upload button{
+  background-color: #900c3f;
+  color: #fff;
+}
+#upload input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: none;
+  outline: none;
+  resize: none;
+  border: 0;
+  font-family: "Montserrat", sans-serif;
+  transition: all 0.3s;
+  border-bottom: 2px solid #bebed2;
+  margin-bottom: 4%;
+}
+#upload input:focus {
+  border-bottom: 2px solid #78788c;
+}
+#upload h2{
+  font-weight: bold;
+  text-align: center;
+}
+#upload label{
+  font-weight: bold;
+}
+#user3{
+  margin-top: -5%;
+  margin-left: 15%;
+}
+#head .badge{
+  background-color: #900c3f;
+  padding:2%;
+  border: 2px solid #fff;
+}
+#user3 h6{
+  text-align: justify;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+/************side bar
+
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #204051;
+  overflow-x: hidden;
+  padding-top: 5%;
+  padding-left: 1%;
+  color: #204051;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: inline;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+************/
+
+/********************************************/
+
+.fa-2x {
+  font-size: 2em;
+  }
+  .fa {
+  padding-top: 8%;
+  padding-bottom: 8%;
+  position: relative;
+  display: table-cell;
+  width: 60px;
+  height: 36px;
+  text-align: center;
+  vertical-align: middle;
+  font-size:30px;
+  color:#fff;
+  }
+  
+  .main-menu:hover,nav.main-menu.expanded {
+  width:250px;
+  overflow:visible;
+  }
+  
+  .main-menu {
+  background:#900c3f;
+  border-right:1px solid #e5e5e5;
+  position:absolute;
+  top:0;
+  bottom:0;
+  height:100%;
+  left:0;
+  width:60px;
+  overflow:hidden;
+  -webkit-transition:width .05s linear;
+  transition:width .05s linear;
+  -webkit-transform:translateZ(0) scale(1,1);
+  z-index:1000;
+  }
+  
+  .main-menu>ul {
+  margin:7px 0;
+  }
+  
+  .main-menu li {
+  position:relative;
+  display:block;
+  width:250px;
+  margin-top: 15%;
+  }
+  
+  .main-menu li>a {
+  position:relative;
+  display:table;
+  border-collapse:collapse;
+  border-spacing:0;
+  color:#fff;
+  font-size: 16px;
+  text-decoration:none;
+  -webkit-transform:translateZ(0) scale(1,1);
+  -webkit-transition:all .1s linear;
+  transition:all .1s linear;
+  text-decoration: none;
+  padding-top: 15%;
+  }
+  
+  .main-menu .nav-icon {
+  position:relative;
+  display:table-cell;
+  width:60px;
+  height:36px;
+  text-align:center;
+  vertical-align:middle;
+  font-size:18px;
+  }
+  
+  .main-menu .nav-text {
+  position:relative;
+  display:table-cell;
+  vertical-align:middle;
+  padding-top: 8%;
+  padding-bottom: 8%;
+  width:190px;
+    font-family:  'Ubuntu', sans-serif;
+  }
+  
+  .main-menu>ul.logout {
+  position:absolute;
+  left:0;
+  bottom:0;
+  }
+  
+  .no-touch .scrollable.hover {
+  overflow-y:hidden;
+  }
+  
+  .no-touch .scrollable.hover:hover {
+  overflow-y:auto;
+  overflow:visible;
+  }
+  
+  a:hover,a:focus {
+  text-decoration:none;
+  }
+  
+  nav {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+  }
+  
+  nav ul,nav li {
+  outline:0;
+  margin:0;
+  padding:0;
+  }
+  .main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
+  color:#fff;
+  background-color:#5fa2db;
+  }
+  .area {
+  float: left;
+  background: #e2e2e2;
+  width: 100%;
+  height: 100%;
+  }
+  
+  #makechange:hover{
+    background-color: black;
+  }
+
+  #makechange2:hover{
+    background-color: black;
+  }
+
+  #makechange3{
+    padding-bottom: 100%;
+  }
+  #makechange3:hover{
+    background-color: black;
+  }
+
+  #some h6{
+    color: black;
+  }

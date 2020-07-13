@@ -1,0 +1,42 @@
+{
+  "name": "eracost",
+  "version": "1.0.0",
+  "description": "website for eracost",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server \" \"npm run client\"",
+    "start": "node server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "author": "ritik",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "classnames": "^2.2.6",
+    "concurrently": "^5.2.0",
+    "config": "^3.3.1",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.7-alpha.3",
+    "express-validator": "^6.6.0",
+    "gridfs-stream": "^1.1.1",
+    "i": "^0.3.6",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.19",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.9.21",
+    "multer": "^1.4.2",
+    "multer-gridfs-storage": "^4.2.0",
+    "node-sass": "^4.14.1",
+    "nodemailer": "^6.4.10",
+    "otp-generator": "^1.1.0"
+  },
+  "keywords": []
+}

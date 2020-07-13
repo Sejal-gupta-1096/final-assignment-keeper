@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://GRF1234:GRF1234@grf.0sfxy.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "secret": "ERACOST"
+}
