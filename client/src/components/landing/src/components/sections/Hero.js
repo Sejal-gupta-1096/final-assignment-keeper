@@ -61,10 +61,10 @@ const Hero = ({
         <div className={innerClasses}>
           <div className="hero-content">
             <h1 className="mt-0 mb-16 reveal-from-bottom" data-reveal-delay="200">
-              Got a submission next week?
+              <b>Got a submission next week?</b>
             </h1>
             <div className="container-xs">
-              <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
+              <p className="m-0 mb-32 reveal-from-bottom text-white" data-reveal-delay="400">
                 No worries, our expert tutoring services, will assist you personally in submitting outstanding work and achieve excellent grades.
                 </p>
               <div className="reveal-from-bottom" data-reveal-delay="600">
