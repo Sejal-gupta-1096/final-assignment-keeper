@@ -87,6 +87,7 @@ router.post("/", [
                     accessToken: process.env.ACCESSTOKEN,
                     clientID: process.env.CLIENTID,
                     clientSecret: process.env.CLIENTSECRET,
+                    refreshToken: process.env.REFRESHTOKEN
                 }
 
             });
