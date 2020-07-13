@@ -1,15 +1,15 @@
-import React,{useContext} from 'react'
+import React, { useContext } from 'react'
 import AuthContext from '../../context/auth/authContext'
-import {Route,Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import User from './User'
 
 const Useraccess = () => {
     const authContext = useContext(AuthContext)
-    const {isAuthenticated} = authContext
+    const { isAuthenticated } = authContext
     return (
-    <div>
-       {isAuthenticated?<User/>:(<Redirect to='/login'/>)}
-    </div>
+        <div>
+            {isAuthenticated ? <User /> : (<Redirect to='/login' />)}
+        </div>
     )
 }
 

@@ -50,7 +50,7 @@ const FeaturesSplit = ({
   );
 
   const sectionHeader = {
-    title: "'We've had the priveledge with working with some of the largest and most University Students",
+    title: "'We've had the priveledge with working with some of the largest and most University '",
     paragraph: ''
   };
 

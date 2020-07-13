@@ -1,4 +1,4 @@
-import React, { useReducer,useContext } from 'react';
+import React, { useReducer, useContext } from 'react';
 import AssignContext from './AssignContext';
 import AssignReducer from './AssignReducer';
 
@@ -13,22 +13,22 @@ import axios from 'axios'
 
 const AssignState = (props) => {
     const initialState = {
-        files:[],
-        sols:[],
-        assignload:false
+        files: [],
+        sols: [],
+        assignload: false
     }
     const [state, dispatch] = useReducer(AssignReducer, initialState)
 
 
     //Download files
-    const downloadfiles = (contactno)=>{
-        console.log('in assignstate');
+    const downloadfiles = (contactno) => {
+
         let url = ''
-        if(contactno==9876543210){
+        if (contactno == 9876543210) {
             url = "/GRF/api/get/admin"
         }
-        else{
-            url = "/GRF/api/"+contactno
+        else {
+            url = "/GRF/api/" + contactno
         }
         axios.get(url, {
             headers: {
@@ -40,21 +40,21 @@ const AssignState = (props) => {
                     type: DOWNLOAD_FILE_S,
                     payload: res.data
                 })
-                
+
             })
             .catch(err => {
                 console.log(err);
             })
     }
 
-    const getsolutions = (contactno)=>{
-        console.log('in assignstate');
+    const getsolutions = (contactno) => {
+
         let url = ''
-        if(contactno==9876543210){
+        if (contactno == 9876543210) {
             url = "/GRF/api/admin/sol"
         }
-        else{
-            url = "/GRF/api/sols/"+contactno
+        else {
+            url = "/GRF/api/sols/" + contactno
         }
         console.log("going");
         axios.get(url, {
@@ -80,14 +80,14 @@ const AssignState = (props) => {
             payload: value
         })
     }
-    
-    
+
+
     return (
         <AssignContext.Provider
             value={{
-                files:state.files,
-                sols:state.sols,
-                assignload:state.assignload,
+                files: state.files,
+                sols: state.sols,
+                assignload: state.assignload,
                 downloadfiles,
                 getsolutions,
                 setLoad

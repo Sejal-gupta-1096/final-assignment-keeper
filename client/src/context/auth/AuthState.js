@@ -117,6 +117,7 @@ const AuthState = (props) => {
     }
     //LoginUser
     const loginUser = async formData => {
+        //eslint-disable-next-line
         const res = await axios.post('/api/auth', formData, {
             header: {
                 'content-type': 'application/json'
@@ -143,7 +144,7 @@ const AuthState = (props) => {
     }
     //forgot password
     const forgotPassword = async formData => {
-
+        //eslint-disable-next-line
         const res = await axios.post('/api/forgotPassword', formData, {
             header: {
                 'content-type': 'application/json'
@@ -163,7 +164,7 @@ const AuthState = (props) => {
             })
     }
     const changePassword = async formData => {
-
+        //eslint-disable-next-line
         const res = await axios.post('/api/changePassword', formData, {
             header: {
                 'content-type': 'application/json'
