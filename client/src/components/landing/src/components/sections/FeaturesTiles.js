@@ -143,7 +143,7 @@ const FeaturesTiles = ({
                   <h4 className="mt-0 mb-8">
                     Satisfaction
                     </h4>
-                  <p className="m-0 text-sm text-white" style={{ color: "#9ca9b3" }}>
+                  <p className="m-0 text-sm text-white">
                     Customer is the King and we possess the magic to content the King. We have a huge experience, in terms of diversity of work and clients served. We are fully dedicated and provide personalized mentorship to our each and every client. We provide you with a state-of-the-art personalized dashboard, to track all your tasks and receive expert advice on the same.
                     </p>
                 </div>

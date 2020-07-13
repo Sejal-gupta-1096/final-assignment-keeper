@@ -48,7 +48,7 @@ const SectionHeader = ({
                 )}>{data.title}</Component>
             }
             {data.paragraph &&
-              <p className="m-0" style={{ color: "#9ca9b3" }}>{data.paragraph}</p>
+              <p className="m-0">{data.paragraph}</p>
             }
           </div>
         </div>
