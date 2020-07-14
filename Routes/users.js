@@ -148,13 +148,16 @@ router.post("/", [
                 else {
                     try {
                         User.deleteOne({ email })
+                        return res.status(400).json({ msg: 'try again' });
+
                     }
                     catch (err) {
                         console.log(err)
+                        res.status(400).json({ msg: 'try again' });
+
                     }
 
-                    console.log(error)
-                    res.status(400).json({ msg: 'try again' });
+
                 }
                 smtpTransport.close();
             });
