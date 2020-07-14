@@ -43,11 +43,13 @@ router.post("/", [
         const OAuth2 = google.auth.OAuth2;
         const oauth2Client = new OAuth2(
             process.env.CLIENTID, // ClientID
-            process.env.CLIENTSECRET, // Client Secret
+            process.env.CLIENTSECRET, // Client Secret,
             "https://developers.google.com/oauthplayground" // Redirect URL
         );
         oauth2Client.setCredentials({
-            refresh_token: process.env.REFRESHTOKEN
+            refresh_token: process.env.REFRESHTOKEN,
+            callbackURL: "/http://herokupathauth/google/callback",
+            proxy: true
         });
         const accessToken = oauth2Client.getAccessToken()
         try {
