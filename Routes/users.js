@@ -38,7 +38,18 @@ router.post("/", [
             })
         }
         const { name, email, password, college, country, phone } = req.body
-
+        const nodemailer = require("nodemailer");
+        const { google } = require("googleapis");
+        const OAuth2 = google.auth.OAuth2;
+        const oauth2Client = new OAuth2(
+            process.env.CLIENTID, // ClientID
+            process.env.CLIENTSECRET, // Client Secret
+            "https://developers.google.com/oauthplayground" // Redirect URL
+        );
+        oauth2Client.setCredentials({
+            refresh_token: process.env.REFRESHTOKEN
+        });
+        const accessToken = oauth2Client.getAccessToken()
         try {
 
             let user = await User.findOne({ email });
@@ -78,24 +89,36 @@ router.post("/", [
                 token: crypto.randomBytes(5).toString('hex')
             })
             await token.save()
-            var transporter = nodemailer.createTransport({
-                pool: true,
-                service: 'Gmail',
+            const smtpTransport = nodemailer.createTransport({
+                service: "gmail",
                 auth: {
-                    type: 'OAuth2',
-                    user: process.env.USER,
-                    accessToken: process.env.ACCESSTOKEN,
-                    clientID: process.env.CLIENTID,
+                    type: "OAuth2",
+                    user: "arihantsingla2020@gmail.com",
+                    clientId: process.env.CLIENTID,
                     clientSecret: process.env.CLIENTSECRET,
-                    refreshToken: process.env.REFRESHTOKEN
+                    refreshToken: process.env.REFRESHTOKEN,
+                    accessToken: accessToken
                 }
-
             });
-            transporter.verify((error, success) => {
-                if (error) return res.status(400).json({ msg: 'not verified outh' })
-                console.log("server is ready to take our mails", success)
+            // var transporter = nodemailer.createTransport({
+            //     pool: true,
+            //     service: 'Gmail',
+            //     auth: {
+            //         type: 'OAuth2',
+            //         user: process.env.USER,
+            //         accessToken: process.env.ACCESSTOKEN,
+            //         clientID: process.env.CLIENTID,
+            //         clientSecret: process.env.CLIENTSECRET,
+            //         refreshToken: process.env.REFRESHTOKEN,
+            //         expires: 1594663571726 + 60000000
+            //     }
 
-            })
+            // });
+            // transporter.verify((error, success) => {
+            //     if (error) return res.status(400).json({ msg: 'not verified outh' })
+            //     console.log("server is ready to take our mails", success)
+
+            // })
             // transporter.on('token', token => {
             //     console.log('new access token generated');
             //     console.log('User:', token.user);
@@ -108,14 +131,31 @@ router.post("/", [
                 subject: 'Account Verification Token',
                 text: `Your Verification code is ${token.token}`
             };
-            transporter.sendMail(mailOptions, async err => {
-                if (err) {
-                    await User.deleteOne({ email })
-                    return res.status(400).json({ msg: 'try again' });
+            // transporter.sendMail(mailOptions, async err => {
+            //     if (err) {
+            //         await User.deleteOne({ email })
+            //         return res.status(400).json({ msg: 'try again' });
+            //     }
+            //     res.status(200).json('A verification email has been sent to ' + user.email + '.');
+            // });
+            smtpTransport.sendMail(mailOptions, async (error, response) => {
+                if (!error) {
+                    console.log(response)
+                    res.status(200).json('A verification email has been sent to ' + user.email + '.');
                 }
-                res.status(200).json('A verification email has been sent to ' + user.email + '.');
-            });
+                else {
+                    try {
+                        User.deleteOne({ email })
+                    }
+                    catch (err) {
+                        console.log(err)
+                    }
 
+                    console.log(error)
+                    res.status(400).json({ msg: 'try again' });
+                }
+                smtpTransport.close();
+            });
         }
         catch (err) {
             console.log(err);
