@@ -15,9 +15,33 @@ const Upload = require('./models/Upload')
 const User = require('./models/User')
 const Solution = require('./models/Solution')
 const checkToken = require('./middleware/auth')
+
+
+const cors = require('cors');
+const chatServer = require("http").Server(app);
+//setting up configuation for setting sockets on the chat server
+const chatSockets = require("./config/chat_sockets").chatSockets(chatServer);
+
+
 app.use(fileUpload());
 /**************************** */
 app.use(express.json())
+
+var corsOptions = {
+  origin: 'http://localhost:800',
+  optionsSuccessStatus: 200 ,// some legacy browsers (IE11, various SmartTVs) choke on 204
+  credentials : true
+}
+
+app.use(cors(corsOptions));
+
+chatServer.listen(8000, function (error) {
+  if (error) {
+    console.log("Error in setting up Chat Server");
+  } else {
+    console.log("Chat Server is listening on port 8000");
+  }
+});
 
 
 //Routes
@@ -26,14 +50,17 @@ app.use("/api/auth", require('./Routes/auth'))
 app.use("/api/postConfirmation", require('./Routes/postConfirmation'))
 app.use("/api/forgotPassword", require('./Routes/forgotPassword'))
 app.use("/api/changePassword", require('./Routes/changePassword'))
+app.use("/api/fetchUsers", require('./Routes/fetchUsers'))
 //Home page
 db()
 
-
 //server
-app.listen(process.env.PORT || 5000, () => {
+app.listen(5000, () => {
   console.log("server up at 5000");
 })
+
+
+
 
 
 /**********************DB for files************************ */

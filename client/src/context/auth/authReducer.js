@@ -13,7 +13,8 @@ import {
     FORGOT_FAIL,
     FORGOT_SUCCESS,
     CHANGEPASSWORD_SUCCESS,
-    CHANGEPASSWORD_FAIL
+    CHANGEPASSWORD_FAIL,
+    FETCH_USERS
 } from '../types'
 export default (state, action) => {
     switch (action.type) {
@@ -158,6 +159,13 @@ export default (state, action) => {
                 ...state,
                 loading: false,
                 error: action.payload,
+            }
+        }
+
+        case FETCH_USERS : {
+            return {
+                ...state,
+                all_users : action.payload
             }
         }
         default:

@@ -36,9 +36,13 @@ const userSchema = mongoose.Schema({
     },
     resetOTP: {
         type: Number
-    }
-
-
+    },
+    messages : [
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'Message'
+        }
+    ]
 })
 const User = mongoose.model('user', userSchema)
 module.exports = User

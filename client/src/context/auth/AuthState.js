@@ -16,7 +16,8 @@ import {
     FORGOT_SUCCESS,
     FORGOT_FAIL,
     CHANGEPASSWORD_SUCCESS,
-    CHANGEPASSWORD_FAIL
+    CHANGEPASSWORD_FAIL,
+    FETCH_USERS
 } from '../types'
 import axios from 'axios'
 import setAuthToken from '../../setAuthToken';
@@ -33,7 +34,8 @@ const AuthState = (props) => {
         user: null,
         msg: null,
         isVerified: false,
-        OTPsent: false
+        OTPsent: false,
+        all_users : []
     }
     const [state, dispatch] = useReducer(authReducer, initialState)
 
@@ -129,6 +131,7 @@ const AuthState = (props) => {
                     payload: res.data
                 })
                 loadUser()
+                fetchUsers()
             })
             .catch(err => {
                 dispatch({
@@ -190,6 +193,20 @@ const AuthState = (props) => {
         })
     }
 
+    const fetchUsers = async () =>{
+        const res = await axios.get('/api/fetchUsers', {
+            header: {
+                'content-type': 'application/json'
+            }
+        }).then(res => {
+            console.log("All users" , res.data.users)
+            dispatch({
+                type: FETCH_USERS,
+                payload: res.data.users
+            })
+        })
+    }
+
     return (
         <authContext.Provider
             value={{
@@ -201,6 +218,7 @@ const AuthState = (props) => {
                 msg: state.msg,
                 isVerified: state.isVerified,
                 OTPsent: state.OTPsent,
+                all_users : state.all_users,
                 registerUser,
                 verifyUser,
                 loginUser,
@@ -209,7 +227,8 @@ const AuthState = (props) => {
                 setLoading,
                 logout,
                 forgotPassword,
-                changePassword
+                changePassword,
+                fetchUsers
             }}>
             {props.children}
         </authContext.Provider>

@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const Token = require('../models/Token')
 const User = require('../models/User')
+
 router.post("/", async (req, res) => {
 
     let token = await Token.findOne({ token: req.body.token });

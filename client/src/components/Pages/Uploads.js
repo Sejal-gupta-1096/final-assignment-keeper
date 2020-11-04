@@ -1,4 +1,4 @@
-import React, { Component, useContext, useEffect, Fragment } from 'react';
+import React, { Component, useContext, useEffect, useState , Fragment } from 'react';
 import AuthContext from '../../context/auth/authContext'
 import AssignContext from '../../context/assignments/AssignContext'
 import SideBar from '../Sidebar/Sidebar'
@@ -107,7 +107,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
+import Chat from './Chat'
 
 
 
@@ -120,6 +120,11 @@ export default function Login() {
     let contactno = ''
     let email = ''
     let locs = []
+    
+    const [state, setstate] = useState({
+        email2: '',
+    })
+
     useEffect(() => {
         //eslint-disable-next-line
         loadUser()
@@ -129,6 +134,11 @@ export default function Login() {
             name = user.name
             contactno = user.phone
             email = user.email
+            setstate({
+                email2 : user.email
+            })
+            console.log(state.email2)
+            console.log(email , name)
             downloadfiles(contactno)
             if (files) {
                 files.map((file) => {
@@ -139,11 +149,9 @@ export default function Login() {
         }
     }, [user])
 
-
-
-
     const classes = useStyles();
-
+    let phone = '9876543210';
+    console.log(email , name , state.email2);
     return (
         <>
             <SideBar />
@@ -317,7 +325,12 @@ export default function Login() {
                 </div>
 
             </Container>
+            
+           {/* {phone !== '9876543210' ?  */}
+          
+            {state.email2 !== '' ? <Chat  email={state.email2} /> : null  }
         </>
+        
     );
 }
 

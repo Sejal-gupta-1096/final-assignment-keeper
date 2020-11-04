@@ -16,6 +16,9 @@ import Recent from './components/Pages/Recent'
 import Solutions from './components/Pages/Solutions'
 import ForgotPassword from './components/auth/ForgotPassword'
 import App1 from './components/landing/src/App'
+
+import ChatRoom from './components/Pages/ChatRoom'
+
 // import './components/landing/src/assets/scss/style.scss'
 const App = () => {
   return (
@@ -33,6 +36,10 @@ const App = () => {
               <Route exact path="/register" component={Register} />
               <Route exact path="/verification" component={Verification} />
               <Route exact path="/User/solutions" component={Solutions} />
+
+              <Route exact path="/User/ChatRoom" component={ChatRoom} />
+              
+
             </Switch>
           </Fragment>
         </Router>

@@ -4,7 +4,7 @@ const User = require('../models/User')
 const Token = require('../models/Token')
 const nodemailer = require('nodemailer')
 const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const config = require('config')
 const secret = config.get('secret')
 const crypto = require('crypto')
@@ -155,6 +155,7 @@ router.post("/", [
                     );
                 }
             ], function (err, results) {
+                console.log(`${token.token}`);
                 if (err) {
 
                     return res.status(400).json({ msg: 'try again' })

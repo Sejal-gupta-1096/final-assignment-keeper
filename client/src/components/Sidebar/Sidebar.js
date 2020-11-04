@@ -32,9 +32,10 @@ const drawerWidth = 240;
 function ResponsiveDrawer(props) {
     const authContext = useContext(AuthContext)
     const {user,isAuthenticated,logout} = authContext
-    let name=''
+    let name='',phone = ""
     if(user){
         name = user.name
+        phone = user.phone
     }
     let greet = "Hello " +name
   const { window } = props;
@@ -83,12 +84,21 @@ function ResponsiveDrawer(props) {
         </a>
 
         <a href="/login" onClick={handleclick}>
-        <ListItem button key="Logout" style={{marginTop:"10%"}} id="makechange3">
+        <ListItem button key="Logout" style={{marginTop:"10%"}} id="makechange">
             <ListItemIcon> <ExitToAppIcon style={{height:"35px",width:"35px",color:"#fff"}}/> </ListItemIcon>
             <ListItemText primary="Logout" className="text-white" />
         </ListItem>
         </a>
 
+        { phone == '9876543210'? 
+        <a href="/User/ChatRoom">
+        <ListItem button key="Logout" style={{marginTop:"10%"}} id="makechange">
+            <ListItemIcon> <ExitToAppIcon style={{height:"35px",width:"35px",color:"#fff"}}/> </ListItemIcon>
+            <ListItemText primary="Chat Room" className="text-white" />
+        </ListItem>
+        </a>
+        : null}
+        
       </List>
     </div>
   );
